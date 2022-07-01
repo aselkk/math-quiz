@@ -1,2 +1,3 @@
-import '../styles/index.scss'
-// import '../styles/start.scss'
+import '../styles/index.scss';
+import { login } from "./login";
+login()

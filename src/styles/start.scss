@@ -1,5 +1,5 @@
 
-#start{
+#start-form{
     display: flex;
     justify-content: center;
     align-items: start;
@@ -33,6 +33,7 @@
         width: 100%;
         justify-content: space-between;
         gap: 10px;
+        margin-top: 10px;
     }
     .bttn--start{
         margin: 0 auto;
@@ -78,4 +79,8 @@
         }
     }
 
+}
+
+.paragraph{
+    color:red;
 }
