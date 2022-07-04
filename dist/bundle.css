@@ -2,21 +2,6 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss ***!
   \***********************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Trispace:wght@200;300;400;500&display=swap);
-/*!*************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/styles/start.scss ***!
-  \*************************************************************************/
-#start{
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: column;
-    gap: 10px;
-
-    .input-container input{
-        height: 40px;
-        border: 1px solid $fifth-color;
-    }
-}
 /*!***************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/resolve-url-loader/index.js!./node_modules/sass-loader/dist/cjs.js!./src/styles/index.scss (1) ***!
   \***************************************************************************************************************************************************************/
@@ -26,6 +11,8 @@
   box-sizing: border-box;
   font-family: "Trispace";
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 section {
@@ -42,8 +29,185 @@ section {
   padding: 150px;
 }
 
-body {
-  color: black;
+.bttn {
+  padding: 10px;
+  width: 300px;
+  height: 60px;
+  box-sizing: border-box;
+  background-color: unset;
+  border: 2px solid #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+.bttn:hover {
+  background-color: #8893ca;
+}
+
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+#start-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 35px;
+}
+#start-form h2 {
+  letter-spacing: 5px;
+}
+#start-form .input-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#start-form .input-container input {
+  height: 60px;
+  width: 600px;
+  border: 2px solid #fff;
+  padding-left: 15px;
+  background-color: #353d5b;
+  font-size: 16px;
+}
+#start-form .modes__bttns,
+#start-form .bttns__bottom {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+#start-form .bttn--start {
+  margin: 0 auto;
+  background-color: #6779d4;
+  width: 400px;
+  font-size: 18px;
+}
+#start-form .bttn--start:hover {
+  background-color: #fff;
+  color: #6779d4;
+  border-color: #6779d4;
+}
+#start-form .mode-radio {
+  width: 40px;
+}
+#start-form input[type=radio] {
+  display: none;
+}
+#start-form #practice:checked:checked ~ .option-1,
+#start-form #time:checked:checked ~ .option-2 {
+  border-color: #fff;
+  background-color: #8893ca;
+}
+#start-form #practice:checked:checked ~ .option-1 span,
+#start-form #time:checked:checked ~ .option-2 span {
+  color: #fff;
+}
+#start-form .option {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 296px;
+  height: 60px;
+  background-color: unset;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+#start-form .option:hover {
+  background-color: #8893ca;
+}
+
+.paragraph {
+  color: red;
+}
+
+.gameplay .gameplay-container {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 30px;
+}
+.gameplay .top {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.gameplay .top .top-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 20px;
+}
+.gameplay .top .top-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  gap: 20px;
+}
+.gameplay .top .top-right .bttn--stop {
+  width: 208px;
+  height: 30px;
+  background-color: #d74c42;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.gameplay .game {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+  justify-content: space-around;
+}
+.gameplay .game .num,
+.gameplay .game .equals,
+.gameplay .game .operator {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+}
+.gameplay .game input {
+  width: 120px;
+  height: 60px;
+  border: 2px solid #fff;
+  background-color: unset;
+  font-size: 36px;
+  text-align: center;
+}
+.gameplay .game input::placeholder {
+  font-size: 36px;
+}
+.gameplay .bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.gameplay .bottom .bttn--check {
+  width: 200px;
+  height: 50px;
+  background-color: #00A36C;
+  border: 1px solid #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=bundle.css.map*/

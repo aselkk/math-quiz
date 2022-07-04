@@ -7,22 +7,41 @@
     <title>Math Quiz</title>
 <script defer src="bundle.js"></script><link href="bundle.css" rel="stylesheet"></head>
 <body>
-    <section class="gameplay firstWindow" id="firstWindow">
+    <section class="firstWindow" id="firstWindow">
         <div class="container">
-            <div id="start" class="start">
-                <h2>Hello Gamer!</h2>
+
+            <form id="start-form" class="start-form" name="start-form">
+
+                <h2>Hello, Gamer!</h2>
+
                 <div class='input-container'>
-                    <h4>Tell us your name?</h4>
-                    <input type="text" id="username">
+                    <h4 class="input-header">Tell us your name:</h4>
+                    <input type="text" id="username" class="username">
                 </div>
-                <div class="modes_bttns">
-                    <button class="bttn bttn--practice">practice</button>
-                    <button class="bttn bttn--timeAttack">time attack</button>
+
+                <div class="modes__container">
+                    <h4>Choose game mode:</h4> 
+                    <div class="modes__bttns">
+                        <input class='mode-radio mode-radio--practice' type="radio" value="practice" name="select" id="practice" checked>
+                    <input class='mode-radio mode-time' type="radio" value="time" name="select" id="time">
+                    <label for="practice" class="option option-1">
+                        <span class='practice'>practice</span>
+                    </label>
+                    <label for="time" class="option option-2">
+                        <span class="time">time attack</span>
+                    </label>
+                    </div>
                 </div>
-                <button class="bttn bttn--start">let's go!</button>
-                <button class="bttn bttn--rules">don’t know rules? clicke here!</button>
-                <button class="bttn bttn--leaderboard">leaderboard</button>
-            </div>
+
+                    <button type="submit" class="bttn bttn--start">
+                        start!
+                    </button>
+
+                <div class="bttns__bottom">
+                    <button class="bttn bttn--rules">don’t know rules? clicke here!</button>
+                    <button class="bttn bttn--leaderboard">leaderboard</button>
+                </div>
+            </form>
         </div>
     </section>
 </body>

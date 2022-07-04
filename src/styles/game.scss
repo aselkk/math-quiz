@@ -1,0 +1,76 @@
+.gameplay{
+    .gameplay-container{
+        width: 65%;
+        @include display-flex(start, column);
+        gap: 30px;
+    }
+
+    .top{
+        margin-top: 30px;
+        width: 100%;
+        @include display-flex(center, row);
+        justify-content:space-between;
+
+        .top-left{
+            @include display-flex(start, column);
+            gap: 20px;
+        }
+        
+        .top-right{
+            @include display-flex(end, column);
+            gap: 20px;
+
+            .bttn--stop{
+                width: 208px;
+                height: 30px;
+                background-color:#d74c42;
+                border: 1px solid #fff;
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .game{
+        width: 100%;
+        @include display-flex(center, row);
+        padding: 30px 0;
+        justify-content:space-around;
+    
+        .num,
+        .equals,
+        .operator{
+            @include display-flex(center, row);
+            font-size: 34px;
+        }
+    
+        input{
+            width: 120px; 
+            height: 60px;
+            border: 2px solid $fifth-color;
+            background-color: unset;
+            font-size: 36px;
+            text-align: center;
+    
+            &::placeholder{
+                font-size: 36px;
+            }
+            
+        }
+    }
+
+    .bottom{
+        width: 100%;
+        @include display-flex(center, column);
+        gap:30px;
+        
+        .bttn--check{
+            width: 200px;
+            height: 50px;
+            background-color:#00A36C;
+            border: 1px solid #fff;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+}

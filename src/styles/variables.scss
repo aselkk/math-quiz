@@ -3,3 +3,10 @@ $second-color: #8893ca;
 $third-color: #c5c6c7;
 $fourth-color: #6779d4;
 $fifth-color: #fff;
+
+@mixin display-flex ($align-item, $flex-direction){
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: center;
+    align-items:$align-item;
+}

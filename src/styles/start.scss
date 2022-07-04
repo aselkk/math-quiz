@@ -1,9 +1,6 @@
 
 #start-form{
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: column;
+    @include display-flex(start,column);
     gap: 35px;
 
     h2{
@@ -38,6 +35,8 @@
     .bttn--start{
         margin: 0 auto;
         background-color: $fourth-color;
+        width: 400px;
+        font-size: 18px;
         &:hover{
             background-color: #fff;
             color:$fourth-color;
@@ -65,11 +64,9 @@
     }
 
     .option{
-        display: flex;
-        justify-content: center;
-        align-items: center; 
+        @include display-flex(center,row);
         position: relative;
-        width: 300px;
+        width: 296px;
         height: 60px;
         background-color:unset;
         border: 2px solid $fifth-color;

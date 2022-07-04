@@ -1,6 +1,6 @@
 export const login = () => {
 
-    document.getElementById("username").addEventListener('input', function (e) {
+    document.getElementById("username")?.addEventListener('input', function (e) {
         if (e.target.value.length >= 1) {
             document.querySelector(".input-header").style = 'color: #fff';
             document.getElementById('username').style = 'border: 2px solid #fff';
