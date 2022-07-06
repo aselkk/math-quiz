@@ -4,33 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Game</title>
 </head>
 <body>
     <section class="gameplay">
         <div class="container gameplay-container">
-            <h3 class="user-greet"></h3>
-            <div class="top">
-                <div class="top-left">
-                    <p class="game-mode">Game mode: Practice</p>
-                    <p class="game-level">Level: 1</p>
+            <form class="gameplay-form">
+                <h2 class="user-greet"></h2>
+                <div class="top">
+                    <div class="top-left">
+                        <p class="game-mode-wrapper">Game mode: <span class="game-mode">Practice</span></p>
+                        <p class="game-level-wrapper">Level: <span class="game-level">1</span></p>
+                    </div>
+                    <div class="top-right">
+                        <p class="timer">Time left: <span id="time">--:--</span></p>
+                        <button class="bttn--stop" id="open-modal-btn" data-target="modal-window--game_end" type="button">stop the game</button>
+                    </div>
                 </div>
-                <div class="top-right">
-                    <p>Time left: 01:23</p>
-                    <button class="bttn--stop">stop the game</button>
+                <div class="game">
+                    <div class="num num-1">1</div>
+                    <div class="operator">+</div>
+                    <div class="num num-2">2</div>
+                    <div class="equals">=</div>
+                    <input type="number" class="answer" autofocus required>
+                </div>
+                <div class="bottom">
+                    <p class="count"></p>
+                    <button class="bttn--check">check</button>
+                    <p class="score-wrapper">Your score is: <span class="score">0</span></p>
+                </div>
+            </form>
+            <div class="modal-window--game_end" id="modal-window--game_end">
+                <div class="modal-content modal-content--game_end">
+                    <h3 class="modal-header">what a game it was!</h3>
+                    <p class="score-txt">Your score: </p>
+                    <p class="score-num">0</p>
+                    <p class="totals-wrapper">Correct answers: <span class="total-correct">0</span> </p>
+                    <p class="totals-wrapper">Incorrect answers: <span class="total-incorrect">0</span> </p>
+                    <a href="game.html"><button class="bttn"> play again </button> </a>
+                    <button id="open-modal-btn" data-target="modal-window--leaderboard" class="bttn bttn--leaderboard" type="button"> leaderboard </button>
+                    <a href="index.html"><button class="bttn"> main menu</button> </a>
                 </div>
             </div>
-            <div class="game">
-                <div class="num">1</div>
-                <div class="operator">+</div>
-                <div class="num">2</div>
-                <div class="equals">=</div>
-                <input type="number" placeholder="00" class="answer">
+            <div class="modal-window--leaderboard" id="modal-window--leaderboard">
+                <div class="modal-content modal-content--leaderboard">
+                    <h3 class="modal-header">leaderboard</h3>
+                    <p>Asel: 10</p>
+                    <button class="bttn modal-btn" id="modal-btn" type="button"> close </button>
+                </div>
             </div>
-            <div class="bottom">
-                <button class="bttn--check">check</button>
-                <p class="score">your score: 2</p>
-            </div>
+            
         </div>
     </section>
 </body>

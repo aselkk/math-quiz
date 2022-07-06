@@ -37,7 +37,6 @@ section {
   background-color: unset;
   border: 2px solid #fff;
   cursor: pointer;
-  font-size: 14px;
 }
 .bttn:hover {
   background-color: #8893ca;
@@ -132,6 +131,9 @@ input::-webkit-calendar-picker-indicator {
   justify-content: center;
   align-items: start;
   gap: 30px;
+}
+.gameplay .gameplay-container .gameplay-form {
+  width: 100%;
 }
 .gameplay .top {
   margin-top: 30px;

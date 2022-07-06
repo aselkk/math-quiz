@@ -1,16 +1,21 @@
+import { initModalToggling } from './modal'
+
 export const login = () => {
 
-    document.getElementById("username")?.addEventListener('input', function (e) {
+    const userInput =  document.getElementById("username")
+
+    userInput?.addEventListener('input', function (e) {
         if (e.target.value.length >= 1) {
             document.querySelector(".input-header").style = 'color: #fff';
-            document.getElementById('username').style = 'border: 2px solid #fff';
+            userInput.style = 'border: 2px solid #fff';
         }
     })
 
+
     const validateField = (e) => {
         e.preventDefault();
-        if(document.getElementById('username').value.length == 0){
-            document.getElementById('username').style = 'border: 2px solid #ff5437';
+        if(userInput.value.length == 0){
+            userInput.style = 'border: 1px solid #ff5437';
             document.querySelector('.input-header').style = 'color: #ff5437';
         } else {
             getValues()
@@ -24,17 +29,24 @@ export const login = () => {
 
         const values = {
             name: document.forms['start-form']['username'].value,
-            mode: document.querySelector('input[name="select"]:checked').value
+            mode: document.querySelector('input[name="select"]:checked').value,
+            totalCorrect: 0,
+            totalIncorrect: 0,
+            
         }
-        console.log('values:', values)
 
-        window.localStorage.setItem('username', JSON.stringify(values.name));
+        localStorage.setItem('inputData', JSON.stringify(values));        
 
-        document.querySelector('.bttn--start').addEventListener('click', redirect())
+        document.getElementById('bttnStart').addEventListener('click', redirect())
         function redirect() {
             window.location.href="./game.html";
             console.log('asfdf')
         }
     }
 
+    const username = JSON.parse(localStorage.getItem('inputData'));
+    userInput.value = username.name.replace(/\"/g, "")    
+
 }
+
+initModalToggling()

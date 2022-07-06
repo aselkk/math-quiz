@@ -1,15 +1,25 @@
 .gameplay{
     .gameplay-container{
-        width: 65%;
-        @include display-flex(start, column);
-        gap: 30px;
+        width: 100%;
+        @include display-flex(center, column);
+        .gameplay-form{
+            @include display-flex(start, column);
+            width: 63%;
+            gap: 40px;
+            box-shadow: -1px 2px 13px 2px rgb(255 255 255);
+            padding: 40px;
+            border-radius: 3px;
+            background-color: #4f598273;
+        }
     }
 
     .top{
-        margin-top: 30px;
         width: 100%;
         @include display-flex(center, row);
-        justify-content:space-between;
+        padding: 22px 0;
+        border-top:2px solid #aaaaaa69;
+        border-bottom:2px solid #aaaaaa69;
+        justify-content: space-between;
 
         .top-left{
             @include display-flex(start, column);
@@ -23,10 +33,20 @@
             .bttn--stop{
                 width: 208px;
                 height: 30px;
-                background-color:#d74c42;
-                border: 1px solid #fff;
+                background-color:#ce564dc1;
+                border: none;
                 cursor: pointer;
+
+                &:hover{
+                    background-color:#ce564df5;
+                    box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
+                }
             }
+
+            .timer{
+                display: none;
+            }
+
         }
     }
     
@@ -35,6 +55,7 @@
         @include display-flex(center, row);
         padding: 30px 0;
         justify-content:space-around;
+        border-bottom:2px solid #aaaaaa69;
     
         .num,
         .equals,
@@ -46,13 +67,24 @@
         input{
             width: 120px; 
             height: 60px;
-            border: 2px solid $fifth-color;
+            border: 1px solid $fifth-color;
             background-color: unset;
-            font-size: 36px;
+            font-size: 32px;
             text-align: center;
+            box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
     
             &::placeholder{
                 font-size: 36px;
+                font-weight: 300;
+                letter-spacing:3px;
+                color: rgba(255, 255, 255, 0.483)
+            }
+
+            &:active,
+            &:focus
+            {
+                outline:none;
+                border: 2px solid rgb(235, 222, 222);
             }
             
         }
@@ -62,15 +94,30 @@
         width: 100%;
         @include display-flex(center, column);
         gap:30px;
+        position: relative;
         
         .bttn--check{
             width: 200px;
             height: 50px;
-            background-color:#00A36C;
-            border: 1px solid #fff;
+            background-color:#498685;
+            border: none;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
+
+            &:hover{
+                background-color:#399c79;
+                box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
+            }
         }
+        .score{
+            font-size: 20px;
+        }
+        
+        .count{
+            position: absolute;
+            bottom: 25px;        
+        }
+
     }
 }

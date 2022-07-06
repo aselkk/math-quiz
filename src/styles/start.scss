@@ -17,9 +17,9 @@
         input{
             height: 60px;
             width: 600px;
-            border: 2px solid $fifth-color;
+            border: 1px solid $fifth-color;
             padding-left: 15px;
-            background-color: $first-color;
+            background-color: unset;
             font-size: 16px;
         }
     } 
@@ -34,13 +34,14 @@
     }
     .bttn--start{
         margin: 0 auto;
-        background-color: $fourth-color;
+        background-color: #6a7cd58c;
         width: 400px;
         font-size: 18px;
         &:hover{
-            background-color: #fff;
+            background-color: #f9f9f9d0;
             color:$fourth-color;
-            border-color:$fourth-color;
+            box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
+            border:none;
         }
     }
 
@@ -54,8 +55,8 @@
 
     #practice:checked:checked ~ .option-1,
     #time:checked:checked ~ .option-2 {
-        border-color: #fff;
-        background-color: $second-color;
+        box-shadow: -1px 2px 13px 2px rgb(255, 255, 255);
+        background-color: #8893ca69;
     }
     
     #practice:checked:checked ~ .option-1 span,
@@ -69,15 +70,13 @@
         width: 296px;
         height: 60px;
         background-color:unset;
-        border: 2px solid $fifth-color;
+        border: 1px solid $fifth-color;
         cursor: pointer;
         &:hover{
-            background-color: $second-color;
+            background-color: #7a87c785;
+            box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
+            
         }
     }
 
-}
-
-.paragraph{
-    color:red;
 }

@@ -5,32 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<script defer src="bundle.js"></script><link href="bundle.css" rel="stylesheet"></head>
+<script defer src="bundle.js"></script><script defer src="game.js"></script><link href="bundle.css" rel="stylesheet"></head>
 <body>
     <section class="gameplay">
         <div class="container gameplay-container">
-            <h3 class="user-greet"></h3>
-            <div class="top">
-                <div class="top-left">
-                    <p class="game-mode">Game mode: Practice</p>
-                    <p class="game-level">Level: 1</p>
+            <form class="gameplay-form">
+                <h3 class="user-greet"></h3>
+                <div class="top">
+                    <div class="top-left">
+                        <p class="game-mode">Game mode: Practice</p>
+                        <p class="game-level">Level: 1</p>
+                    </div>
+                    <div class="top-right">
+                        <p>Time left: 01:23</p>
+                        <button class="bttn--stop">stop the game</button>
+                    </div>
                 </div>
-                <div class="top-right">
-                    <p>Time left: 01:23</p>
-                    <button class="bttn--stop">stop the game</button>
+                <div class="game">
+                    <div class="num num-1">1</div>
+                    <div class="operator">+</div>
+                    <div class="num num-2">2</div>
+                    <div class="equals">=</div>
+                    <input type="number" placeholder="00" class="answer" autofocus required>
                 </div>
-            </div>
-            <div class="game">
-                <div class="num">1</div>
-                <div class="operator">+</div>
-                <div class="num">2</div>
-                <div class="equals">=</div>
-                <input type="number" placeholder="00" class="answer">
-            </div>
-            <div class="bottom">
-                <button class="bttn--check">check</button>
-                <p class="score">your score: 2</p>
-            </div>
+                <div class="bottom">
+                    <p class="count"></p>
+                    <button class="bttn--check">check</button>
+                    <p class="score"></p>
+                </div>
+            </form>
         </div>
     </section>
 </body>

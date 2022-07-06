@@ -26,16 +26,87 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const game = () => {
 
+    const username = localStorage.getItem('username');
+    document.getElementById("username").value = username.replace(/\"/g, "");
+
     const setName = () => {
-        const username = localStorage.getItem('username');
-        
-        document.querySelector('.user-greet').innerHTML = `Have fun, ${username}`;
+        document.querySelector('.user-greet').textContent = `Have fun, ${username.replace(/\"/g, "")}`;
         console.log('123');
     }
-
     setName()
 
-    // console.log('123');
+    const firstNum = document.querySelector('.num-1')
+    const secondNum = document.querySelector('.num-2')
+    const operator = document.querySelector('.operator')
+    const answer = document.querySelector('.answer')
+    const form = document.querySelector('.gameplay-form')
+    const score = document.querySelector('.score')
+    const count = document.querySelector('.count')
+
+    function getRandom(min, max) {
+        min = Math.ceil(min)
+        max = Math.floor(max)
+        return Math.floor(Math.random() * (max - min + 1)) + min
+    }
+
+    const operators = ['+', '-', '*', '/']
+
+    const calculate = (a, b, operator) => {
+    switch (operator) {
+        case '+':
+        return a + b
+        case '-':
+        return a - b
+        case '/':
+        return a / b
+        default:
+        return a * b
+    }
+    }
+
+    const generateExample = () => {
+        const firstNum = getRandom(1, 10)
+        const secondNum = getRandom(1, 10)
+        const operator = operators[getRandom(0, 3)]
+
+        if (operator === '/') {
+            if (firstNum % secondNum !== 0) {
+            return generateExample()
+            }
+        }
+
+        const answer = calculate(firstNum, secondNum, operator)
+        return { firstNum, secondNum, operator, answer }
+    }
+
+    const renderExample = (data) => {
+        firstNum.textContent = data.firstNum
+        secondNum.textContent = data.secondNum
+        operator.textContent = data.operator
+    }
+
+    let activeCount = 0
+    let example = generateExample()
+    renderExample(example)
+
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        if (!answer.value) return
+        if (Number(answer.value) === Number(example.answer)) {
+            activeCount += 1
+            count.textContent = '+1'
+        } else {
+            activeCount -= 1
+            count.textContent = '-1'
+        }
+        score.textContent = `Your score is: ${activeCount}`
+        answer.value = ''
+        example = generateExample()
+        renderExample(example)
+    }
+
+form.addEventListener('submit', onSubmit)
 
 }
 
@@ -52,6 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "login": () => (/* binding */ login)
 /* harmony export */ });
 const login = () => {
+
 
     document.getElementById("username")?.addEventListener('input', function (e) {
         if (e.target.value.length >= 1) {
@@ -162,6 +234,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game */ "./src/js/game.js");
 
 
+
+
+const username = localStorage.getItem('username');
 
 
 (0,_login__WEBPACK_IMPORTED_MODULE_1__.login)()

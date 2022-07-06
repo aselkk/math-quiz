@@ -1,6 +1,6 @@
 import '../styles/index.scss';
 import { login } from "./login";
-import { game } from "./game";
+// import { initModalToggling } from './modal'
 
 login()
-game()
+// initModalToggling()

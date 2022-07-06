@@ -8,12 +8,12 @@ const PAGES_DIR = `${path.resolve(__dirname, "src")}/pages/`;
 
 const PAGES = fs
     .readdirSync(PAGES_DIR)
-    .filter((fileName) => fileName.endsWith(".html"));
 
 module.exports = {
     mode: 'development',
     entry: {
-        bundle: path.resolve(__dirname, './src/js/main.js')
+        bundle: path.resolve(__dirname, './src/js/main.js'),
+        game: path.resolve(__dirname, './src/js/game.js'),
     },
     output: {
         filename: '[name].js',
@@ -30,7 +30,9 @@ module.exports = {
         open: true,
         hot: true,
         compress: true, 
-        historyApiFallback: true,
+        historyApiFallback: {
+            rewrites: [{ from: 'game', to: '/game.html'}]
+        },
         watchFiles: {
             paths: PAGES.map(i => {
                 return `./src/pages/`
@@ -64,11 +66,7 @@ module.exports = {
             new HtmlWebpackPlugin({
                 template: `${PAGES_DIR}/${page}`,
                 filename: `${page}`,
-            })
-        ),
-        new HtmlWebpackPlugin({
-            template: "./src/pages/index.html",
-        }),
+            })),
         new MiniCssExtractWebpackPlugin({
             filename: '[name].css'
         }),
