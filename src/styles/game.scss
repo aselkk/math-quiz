@@ -3,8 +3,8 @@
         width: 100%;
         @include display-flex(center, column);
         .gameplay-form{
-            @include display-flex(start, column);
-            width: 63%;
+            @include display-flex(center, column);
+            width: 100%;
             gap: 40px;
             box-shadow: -1px 2px 13px 2px rgb(255 255 255);
             padding: 40px;
@@ -12,6 +12,7 @@
             background-color: #4f598273;
         }
     }
+
 
     .top{
         width: 100%;
@@ -33,12 +34,12 @@
             .bttn--stop{
                 width: 208px;
                 height: 30px;
-                background-color:#ce564dc1;
+                background-color:rgb(200 22 22 / 76%);
                 border: none;
                 cursor: pointer;
 
                 &:hover{
-                    background-color:#ce564df5;
+                    background-color:#d62f23f5;
                     box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
                 }
             }
@@ -49,13 +50,46 @@
 
         }
     }
-    
+
+    .slideIn{
+        // animation: moveToRight 1.5s ease-in-out;
+        // -moz-animation: moveToRight 1.5s ease-in-out;
+        // -webkit-animation: moveToRight 1s ease-in-out;
+        // -o-animation: moveToRight 150ms 2 linear;
+        // animation-delay: 25ms;
+    }
+    .animation {
+        animation-name: newfield;
+        animation-duration:.5s;
+    }
+    @keyframes newfield {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-100vw);
+        }
+    }    
+    .animationfr {
+        animation-name: newfieldfr;
+        animation-duration:.5s;
+    }
+    @keyframes newfieldfr{
+        0% {
+            transform: translateX(100vw);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }    
+
     .game{
-        width: 100%;
+        width: 60%;
         @include display-flex(center, row);
         padding: 30px 0;
         justify-content:space-around;
         border-bottom:2px solid #aaaaaa69;
+        position: relative;
     
         .num,
         .equals,
@@ -86,8 +120,7 @@
                 outline:none;
                 border: 2px solid rgb(235, 222, 222);
             }
-            
-        }
+        }        
     }
 
     .bottom{
@@ -99,14 +132,14 @@
         .bttn--check{
             width: 200px;
             height: 50px;
-            background-color:#498685;
+            background-color:#418652;
             border: none;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
 
             &:hover{
-                background-color:#399c79;
+                background-color:#32be39d5;
                 box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
             }
         }
@@ -116,8 +149,64 @@
         
         .count{
             position: absolute;
-            bottom: 25px;        
+            bottom: 25px;
+            display: none;        
         }
 
+        .score-wrapper,
+        .score-wrapper span{
+            transition: .2 ease-in-out;
+        }
+        .shake-animation {
+            span{
+                color: red;
+                transition: .2 ease-in-out;
+            }
+            color: red;
+            transition: .2 ease-in-out;
+            animation: shake 150ms 2 linear;
+            -moz-animation: shake 150ms 2 linear;
+            -webkit-animation: shake 150ms 2 linear;
+            -o-animation: shake 150ms 2 linear;
+            
+            @keyframes shake {
+                0% {
+                    transform: translate(3px, 0);
+                }
+                50% {
+                    transform: translate(-3px, 0);
+                }
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 1300px) {
+    .gameplay {
+        .game{
+            width: 100%;
+        }
+
+        .top{
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    }
+}
+
+@media(max-width: 390px) {
+    .gameplay {
+        .bttn--stop {
+            width: 190px!important;
+        }
+    }
+    .bttn--close-modal{
+        width: 100%;
+    }
+    a { 
+        width: 100%;
     }
 }

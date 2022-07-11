@@ -26,7 +26,7 @@ module.exports = {
         static: {
             directory: path.join(__dirname, 'dist'),
             },
-        port: 3000,
+        port: 3001,
         open: true,
         hot: true,
         compress: true, 
@@ -36,7 +36,7 @@ module.exports = {
         watchFiles: {
             paths: PAGES.map(i => {
                 return `./src/pages/`
-            }), 
+            }),
                 options: {
                 usePolling: true,
                 },
@@ -45,10 +45,9 @@ module.exports = {
     module: {
         rules : [
             {
-                test: /\.s[ac]ss$/i,
+                test: /\.(sass|scss|css)$/i,
                 use: [
                     MiniCssExtractWebpackPlugin.loader,
-                    // "style-loader",
                     'css-loader',
                     'resolve-url-loader',
                     'sass-loader'
@@ -68,7 +67,7 @@ module.exports = {
                 filename: `${page}`,
             })),
         new MiniCssExtractWebpackPlugin({
-            filename: '[name].css'
+            filename: '[name].css',
         }),
         new CopyWebpackPlugin({
             patterns: [

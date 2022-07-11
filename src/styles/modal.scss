@@ -63,7 +63,43 @@
     }
 }
 
+.select{
+    background: unset;
+    padding: 10px 20px;
+    text-align: center;
+    border: 1px solid #fff;
+
+    &:active{
+        outline:none;
+    }
+}
 .modal-content--game_end{
     gap: 20px;
 }
+
+@media(max-width: 1062px) {
+    .modal-content{
+        width: 70%
+    }
+    .modal-btn{
+        width: 100%!important;
+    }
+}
+
+
+@media(max-width: 862px) {
+    .modal-content{
+        gap: 20px;
+        font-size: 14px;
+        padding: 35px;
+    }
+}
+
+@media(max-width: 862px) {
+    .modal-content{
+        line-height: 23px;
+    }
+}
+
+
 

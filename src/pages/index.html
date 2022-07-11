@@ -24,8 +24,7 @@
                 <div class="modes__container">
                     <h4>Choose game mode:</h4>
                     <div class="modes__bttns">
-                        <input class='mode-radio mode-radio--practice' type="radio" value="practice" name="select"
-                            id="practice" checked>
+                        <input class='mode-radio mode-radio--practice' type="radio" value="practice" name="select" id="practice" checked>
                         <input class='mode-radio mode-time' type="radio" value="time" name="select" id="time">
                         <label for="practice" class="option option-1">
                             <span class='practice'>practice</span>
@@ -59,7 +58,15 @@
                 <div class="modal-window--leaderboard" id="modal-window--leaderboard">
                     <div class="modal-content modal-content--leaderboard">
                         <h3 class="modal-header">leaderboard</h3>
-                        <p>Asel: 10</p>
+                        <select id="select" class="select" name="select">
+                            <option value="practice">Practice</option>
+                            <option value="time" selected>Time Attack</option>
+                        </select>
+                        <div class="leaders-wrapper">
+                            <ul class='leaders-list'>
+                                <li class="leaders-listitem"></li>
+                            </ul>
+                        </div>
                         <button class="bttn modal-btn" id="modal-btn" type="button"> close </button>
                     </div>
                 </div>

@@ -30,26 +30,34 @@
                 </div>
                 <div class="bottom">
                     <p class="count"></p>
-                    <button class="bttn--check">check</button>
+                    <button class="bttn--check animate__animated animate__fadeInUp">check</button>
                     <p class="score-wrapper">Your score is: <span class="score">0</span></p>
                 </div>
             </form>
             <div class="modal-window--game_end" id="modal-window--game_end">
                 <div class="modal-content modal-content--game_end">
-                    <h3 class="modal-header">what a game it was!</h3>
+                    <h3 class="modal-header--end">what a game it was!</h3>
                     <p class="score-txt">Your score: </p>
                     <p class="score-num">0</p>
-                    <p class="totals-wrapper">Correct answers: <span class="total-correct">0</span> </p>
-                    <p class="totals-wrapper">Incorrect answers: <span class="total-incorrect">0</span> </p>
-                    <a href="game.html"><button class="bttn"> play again </button> </a>
-                    <button id="open-modal-btn" data-target="modal-window--leaderboard" class="bttn bttn--leaderboard" type="button"> leaderboard </button>
-                    <a href="index.html"><button class="bttn"> main menu</button> </a>
+                    <p class="totals-wrapper">Correct: <span class="total-correct">0</span> </p>
+                    <p class="totals-wrapper">Incorrect: <span class="total-incorrect">0</span> </p>
+                    <a href="game.html"><button class="bttn bttn--close-modal"> play again </button> </a>
+                    <button id="open-modal-btn" data-target="modal-window--leaderboard" class="bttn bttn--leaderboard bttn--close-modal" type="button"> leaderboard </button>
+                    <a href="index.html"><button class="bttn bttn--close-modal"> main menu</button> </a>
                 </div>
             </div>
             <div class="modal-window--leaderboard" id="modal-window--leaderboard">
                 <div class="modal-content modal-content--leaderboard">
                     <h3 class="modal-header">leaderboard</h3>
-                    <p>Asel: 10</p>
+                    <select id="select" class="select" name="select">
+                        <option value="practice">Practice</option>
+                        <option value="time" selected>Time Attack</option>
+                    </select>
+                    <div class="leaders-wrapper">
+                        <ul class='leaders-list'>
+                            <li class="leaders-listitem"></li>
+                        </ul>
+                    </div>
                     <button class="bttn modal-btn" id="modal-btn" type="button"> close </button>
                 </div>
             </div>
