@@ -98,7 +98,7 @@
             font-size: 34px;
         }
     
-        input{
+        input {
             width: 120px; 
             height: 60px;
             border: 1px solid $fifth-color;
@@ -107,7 +107,7 @@
             text-align: center;
             box-shadow: -1px 1px 29px 10px rgba(255, 255, 255, 0.2);
     
-            &::placeholder{
+            &::placeholder {
                 font-size: 36px;
                 font-weight: 300;
                 letter-spacing:3px;
@@ -115,8 +115,7 @@
             }
 
             &:active,
-            &:focus
-            {
+            &:focus {
                 outline:none;
                 border: 2px solid rgb(235, 222, 222);
             }
@@ -129,7 +128,7 @@
         gap:30px;
         position: relative;
         
-        .bttn--check{
+        .bttn--check {
             width: 200px;
             height: 50px;
             background-color:#418652;
@@ -147,23 +146,50 @@
             font-size: 20px;
         }
         
-        .count{
-            position: absolute;
-            bottom: 25px;
-            display: none;        
+        .score-wrapper{
+            position: relative;
         }
 
-        .score-wrapper,
-        .score-wrapper span{
-            transition: .2 ease-in-out;
+        .substract {
+            color: red ;
+            position: absolute ;
+            right: -30px ;
+            opacity: 0 ;
         }
-        .shake-animation {
-            span{
-                color: red;
-                transition: .2 ease-in-out;
+
+        .add {
+            color: green;
+            position: absolute ;
+            right: -30px ;
+            opacity: 0 ;
+        }
+
+        .fade-animation{
+                -moz-animation: fade .5s ease-in-out;
+                -webkit-animation: fade .5s ease-in-out;
+                -o-animation: fade .5s ease-in-out;
+                animation: fade .5s ease-in-out;
+                
+            @keyframes fade {
+                from {
+                    opacity: 1;
+                    top: 35%;
+                }
+                
+                to {
+                    opacity: 0.2;
+                    top: -70%;
+                }
             }
+
+        }
+        
+        .shake-animation {
+            .score{
+                color: red;
+            }
+
             color: red;
-            transition: .2 ease-in-out;
             animation: shake 150ms 2 linear;
             -moz-animation: shake 150ms 2 linear;
             -webkit-animation: shake 150ms 2 linear;

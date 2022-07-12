@@ -32,8 +32,8 @@ export function startTimer(duration, display) {
             }
             console.log(JSON.parse(localStorage.getItem('storagePlayers')));
             renderLeaderboard()
+            clearInterval(1)
         }
-
+        
     }, 1000);
-
 }

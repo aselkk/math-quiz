@@ -5,42 +5,36 @@ export const renderLeaderboard = () => {
     let filteredByName = []
     players?.forEach((player) => {
         if (filteredByName.length) {
-            console.log(filteredByName, 'filteredByName');
             const res = filteredByName.findIndex((item) => item.name === player.name)
-            console.log(res, 'res');
             if (res >= 0) {
-                console.log(player)
                 if (player.score > filteredByName[res].score) {
                     filteredByName.splice(res, 1);
                     filteredByName.push(player);
                 }
             } else {
-            filteredByName.push(player);
+                filteredByName.push(player);
             }
-            }else {
+        } else {
             filteredByName.push(player);
         }
     })
 
     const filteredByScore = filteredByName.sort((sameName, filteredByName) => filteredByName.score - sameName.score);
-    console.log(filteredByScore, 'filteredByScore')
 
     function renderLeaders(arr) {
         const select = document.getElementById('select');
         const value = select.options[select.selectedIndex].value;
-        console.log(value, 'value');
-        const list = document.querySelector(".leaders-wrapper");
-        list.innerHTML = ''
-
-        function makeElem(arrItem, arrIndex) {
-            const {name, mode, score} = arrItem;
-                let li = document.createElement('li');
-                li.innerHTML = `${name} ${score}`;
-                return li;
-        }
-
         const listContainer = document.createElement('ol');
         const listFragment = document.createDocumentFragment();
+        const list = document.querySelector(".leaders-wrapper");
+        list.innerHTML = ''
+        console.log(select.options);
+        function makeElem(arrItem) {
+            const {name, mode, score} = arrItem;
+            let li = document.createElement('li');
+            li.innerHTML = `${name} ${score}`;
+            return li;
+        }
 
         arr.forEach((item, index) => {
             try {

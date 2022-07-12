@@ -1,9 +1,7 @@
 import { initModalToggling } from './modal'
 import {renderLeaderboard} from './leaderboard'
 
-
 export const login = () => {
-
     const userInput =  document.getElementById("username")
     const inputHeader = document.querySelector('.input-header')
 

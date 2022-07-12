@@ -1,18 +1,18 @@
 import { startTimer } from './timer';
-import { endGame } from './endGame';
 import { initModalToggling } from './modal'
 import {renderLeaderboard} from './leaderboard'
 
 export const game = () => {
     const inputData = JSON.parse(localStorage.getItem('inputData'));
+    document.querySelector('.user-greet').innerText = `Have fun, ${inputData.name.replace(/\"/g, "")}!`;
+
     if (!inputData) return;
 
     document.querySelector('.bttn--stop').addEventListener('click', () => {
         const results = JSON.parse(localStorage.getItem('inputData'))
-        console.log(results, 'results')
         let storagePlayers = JSON.parse(localStorage.getItem('storagePlayers'))
-        console.log(storagePlayers, '1231321');
-        if(storagePlayers){
+
+        if (storagePlayers) {
             storagePlayers.push(results)
             localStorage.setItem('storagePlayers', JSON.stringify(storagePlayers))
         } else {
@@ -20,11 +20,9 @@ export const game = () => {
             storagePlayers.push(results)
             localStorage.setItem('storagePlayers', JSON.stringify(storagePlayers))
         }
-        console.log(JSON.parse(localStorage.getItem('storagePlayers')));
         renderLeaderboard()
     })
     
-    document.querySelector('.user-greet').innerText = `Have fun, ${inputData.name.replace(/\"/g, "")}!`;
 
     const changeMode = () => {
         if (inputData.mode == 'time') {
@@ -33,6 +31,7 @@ export const game = () => {
                 display = document.querySelector('#time');
                 startTimer(time, display);
             };
+
             document.querySelector('.game-mode').innerText = 'time attack'        
             document.querySelector('.timer').style = 'display: block;'        
         }
@@ -45,7 +44,9 @@ export const game = () => {
     const answer = document.querySelector('.answer')
     const form = document.querySelector('.gameplay-form')
     const score = document.querySelector('.score')
-    const count = document.querySelector('.count')
+    const add = document.querySelector('.add')
+    const substract = document.querySelector('.substract')
+    const problemContainer = document.querySelector('.game')
 
     function getRandom(min, max) {
         min = Math.ceil(min)
@@ -63,7 +64,7 @@ export const game = () => {
             return a - b
             case '/':
             return a / b
-            default:
+            case '*':
             return a * b
         }
     }
@@ -75,7 +76,7 @@ export const game = () => {
 
         if (operator === '/') {
             if (firstNum % secondNum !== 0) {
-            return getRandoms()
+                return getRandoms()
             }
         }
 
@@ -91,53 +92,51 @@ export const game = () => {
 
     let totalCorrect = 0
     let totalIncorrect = 0
-    let activeCount = 0
+    let counter = 0
     let problem = getRandoms()
     renderProblem(problem)
 
-
     const onSubmit = (e) => {
-        document.querySelector('.total-correct').innerText = totalCorrect
-        document.querySelector('.total-incorrect').innerText = totalIncorrect
-        document.querySelector('.score-num').innerText = totalCorrect - totalIncorrect
-
         e.preventDefault()
 
         if (!answer.value) return
         if (Number(answer.value) === Number(problem.answer)) {
-            activeCount += 1
-            count.textContent = '+1'
+            counter += 1
             totalCorrect += 1
-            count.style = 'display: block'
-            count.classList.add('animate__fadeInUp')
+            add.classList.add("fade-animation")
+            setTimeout(function() {
+                add.classList.remove('fade-animation')
+            },1000)
         } else {
-            activeCount -= 1
-            count.textContent = '-1'
+            counter -= 1
             totalIncorrect += 1
             document.querySelector('.score-wrapper').classList.add('shake-animation')
+            substract.classList.add('fade-animation')
             setTimeout(function() {
                 document.querySelector('.score-wrapper').classList.remove('shake-animation')
+                substract.classList.remove('fade-animation')
             },1000)
-            
         }
-        
-        score.textContent = activeCount
-        answer.value = ''
-        inputData.score = totalCorrect - totalIncorrect
-        
-        localStorage.setItem('inputData', JSON.stringify(inputData));
-        console.log(JSON.parse(localStorage.getItem('inputData')));
-        localStorage.setItem('inputData', JSON.stringify(inputData));
-        document.querySelector('.game').classList.remove('animationfr')
-        document.querySelector('.game').classList.add('animation')
+
+        problemContainer.classList.remove('animationfr')
+        problemContainer.classList.add('animation')
         setTimeout(function() {
             problem = getRandoms()
             renderProblem(problem)
-            document.querySelector('.game').classList.remove('animation')
-            document.querySelector('.game').classList.add('animationfr')
+            problemContainer.classList.remove('animation')
+            problemContainer.classList.add('animationfr')
         },400)
+
+        score.textContent = counter
+        inputData.score = counter
+        answer.value = ''
+
+        document.querySelector('.total-correct').innerText = totalCorrect
+        document.querySelector('.total-incorrect').innerText = totalIncorrect
+        document.querySelector('.score-num').innerText = counter
+
+        localStorage.setItem('inputData', JSON.stringify(inputData));
     }
-    // document.querySelector('.bttn--leaderboard').addEventListener('click', renderLeaderboard())
     form.addEventListener('submit', onSubmit)
 }
 
