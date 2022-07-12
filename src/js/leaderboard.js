@@ -1,5 +1,7 @@
 export const renderLeaderboard = () => {
     let players = JSON.parse(localStorage.getItem('storagePlayers'))
+    let player = JSON.parse(localStorage.getItem('inputData'))
+    let options = document.getElementById('select').options
     if (!players) return;
 
     let filteredByName = []
@@ -20,6 +22,12 @@ export const renderLeaderboard = () => {
     })
 
     const filteredByScore = filteredByName.sort((sameName, filteredByName) => filteredByName.score - sameName.score);
+
+    if(player.mode === 'practice'){
+        options[0].setAttribute('selected', 'true')
+    } else {
+        options[1].setAttribute('selected', 'true')
+    }
 
     function renderLeaders(arr) {
         const select = document.getElementById('select');
