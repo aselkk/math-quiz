@@ -5,7 +5,7 @@ export const renderLeaderboard = () => {
     let filteredByName = []
     players?.forEach((player) => {
         if (filteredByName.length) {
-            const res = filteredByName.findIndex((item) => item.name === player.name)
+            const res = filteredByName.findIndex((item) => item.name === player.name && item.mode === player.mode)
             if (res >= 0) {
                 if (player.score > filteredByName[res].score) {
                     filteredByName.splice(res, 1);
@@ -44,7 +44,6 @@ export const renderLeaderboard = () => {
             } catch (Error) {
                 console.log(Error);
             }
-            
         });
         listContainer.append(listFragment);
         list.append(listContainer);

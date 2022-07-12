@@ -14,7 +14,9 @@ export const game = () => {
     const problemContainer = document.querySelector('.game')
     const inputData = JSON.parse(localStorage.getItem('inputData'));
     const stopBttn = document.querySelector('.bttn--stop')
-    document.querySelector('.user-greet').innerText = `Have fun, ${inputData.name.replace(/\"/g, "")}!`;
+    const greetingLabel = document.querySelector('.user-greet');
+    if (greetingLabel)
+        greetingLabel.innerText = `Have fun, ${inputData.name.replace(/\"/g, "")}!`;
 
     if (!inputData) return;
 
@@ -36,7 +38,7 @@ export const game = () => {
     const changeMode = () => {
         if (inputData.mode == 'time') {
             window.onload = function () {
-                const time = 10,
+                const time = 90,
                 display = document.querySelector('#time');
                 startTimer(time, display);
             };
@@ -69,8 +71,8 @@ export const game = () => {
     }
 
     const getRandoms = () => {
-        const firstNum = getRandom(1, 10)
-        const secondNum = getRandom(1, 10)
+        const firstNum = getRandom(1, 10 * level)
+        const secondNum = getRandom(1, 10 * level)
         const operator = operators[getRandom(0, 3)]
 
         if (operator === '/') {
@@ -142,6 +144,7 @@ export const game = () => {
         document.querySelector('.total-incorrect').innerText = totalIncorrect
         document.querySelector('.score-num').innerText = counter
         document.querySelector('.game-level').innerText = level
+        
         localStorage.setItem('inputData', JSON.stringify(inputData));        
     }
     form.addEventListener('submit', onSubmit)

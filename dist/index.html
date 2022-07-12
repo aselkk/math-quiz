@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Quiz</title>
-<script defer src="bundle.js"></script><link href="bundle.css" rel="stylesheet"></head>
+<script defer src="bundle.js"></script><script defer src="game.js"></script><link href="bundle.css" rel="stylesheet"></head>
+
 <body>
     <section class="firstWindow" id="firstWindow">
         <div class="container">
@@ -20,29 +22,57 @@
                 </div>
 
                 <div class="modes__container">
-                    <h4>Choose game mode:</h4> 
+                    <h4>Choose game mode:</h4>
                     <div class="modes__bttns">
                         <input class='mode-radio mode-radio--practice' type="radio" value="practice" name="select" id="practice" checked>
-                    <input class='mode-radio mode-time' type="radio" value="time" name="select" id="time">
-                    <label for="practice" class="option option-1">
-                        <span class='practice'>practice</span>
-                    </label>
-                    <label for="time" class="option option-2">
-                        <span class="time">time attack</span>
-                    </label>
+                        <input class='mode-radio mode-time' type="radio" value="time" name="select" id="time">
+                        <label for="practice" class="option option-1">
+                            <span class='practice'>practice</span>
+                        </label>
+                        <label for="time" class="option option-2">
+                            <span class="time">time attack</span>
+                        </label>
                     </div>
                 </div>
 
-                    <button type="submit" class="bttn bttn--start">
-                        start!
-                    </button>
+                <button type="submit" class="bttn bttn--start" id="bttnStart">
+                    start!
+                </button>
 
                 <div class="bttns__bottom">
-                    <button class="bttn bttn--rules">don’t know rules? click here!</button>
-                    <button class="bttn bttn--leaderboard">leaderboard</button>
+                    <button id="open-modal-btn" data-target="modal-window" class="bttn bttn--rules" type="button">don’t
+                        know rules? click here!</button>
+                    <button id="open-modal-btn" data-target="modal-window--leaderboard" class="bttn bttn--leaderboard" type="button">leaderboard</button>
+                </div>
+                <div class="modal-window" id="modal-window">
+                    <div class="modal-content">
+                        <h3 class="modal-header">game rules</h3>
+                        <p>Math Quiz is a great way to check math skills! Players choose a quiz from four different
+                            categories - addition, subtraction, multiplication or division - and then select a
+                            difficulty level. After each quiz is completed, players can view and print their very own
+                            score report.</p>
+                        <button class="bttn modal-btn" id="modal-btn" type="button">close</button>
+                    </div>
+                </div>
+
+                <div class="modal-window--leaderboard" id="modal-window--leaderboard">
+                    <div class="modal-content modal-content--leaderboard">
+                        <h3 class="modal-header">leaderboard</h3>
+                        <select id="select" class="select" name="select">
+                            <option value="practice">Practice</option>
+                            <option value="time" selected>Time Attack</option>
+                        </select>
+                        <div class="leaders-wrapper">
+                            <ul class='leaders-list'>
+                                <li class="leaders-listitem"></li>
+                            </ul>
+                        </div>
+                        <button class="bttn modal-btn" id="modal-btn" type="button"> close </button>
+                    </div>
                 </div>
             </form>
         </div>
     </section>
 </body>
+
 </html>

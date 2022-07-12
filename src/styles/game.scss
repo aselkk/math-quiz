@@ -99,7 +99,7 @@
         }
     
         input {
-            width: 120px; 
+            width: 120px !important; 
             height: 60px;
             border: 1px solid $fifth-color;
             background-color: unset;
@@ -118,6 +118,9 @@
             &:focus {
                 outline:none;
                 border: 2px solid rgb(235, 222, 222);
+            }
+            &::-webkit-inner-spin-button{
+                -webkit-appearance: none;
             }
         }        
     }
