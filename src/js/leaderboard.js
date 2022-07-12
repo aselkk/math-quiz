@@ -28,7 +28,6 @@ export const renderLeaderboard = () => {
         const listFragment = document.createDocumentFragment();
         const list = document.querySelector(".leaders-wrapper");
         list.innerHTML = ''
-        console.log(select.options);
         function makeElem(arrItem) {
             const {name, mode, score} = arrItem;
             let li = document.createElement('li');
@@ -45,6 +44,7 @@ export const renderLeaderboard = () => {
             } catch (Error) {
                 console.log(Error);
             }
+            
         });
         listContainer.append(listFragment);
         list.append(listContainer);

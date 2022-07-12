@@ -38,12 +38,13 @@ export const login = () => {
         function redirect() {
             window.location.href="./game.html";
         }
+
     }
+    
 
     const username = JSON.parse(localStorage.getItem('inputData'));
     if(!username) return
     userInput.value = username.name.replace(/\"/g, "")    
-
 }
 
 initModalToggling()

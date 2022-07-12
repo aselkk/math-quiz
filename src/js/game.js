@@ -3,12 +3,22 @@ import { initModalToggling } from './modal'
 import {renderLeaderboard} from './leaderboard'
 
 export const game = () => {
+    const firstNum = document.querySelector('.num-1')
+    const secondNum = document.querySelector('.num-2')
+    const operator = document.querySelector('.operator')
+    const answer = document.querySelector('.answer')
+    const form = document.querySelector('.gameplay-form')
+    const score = document.querySelector('.score')
+    const add = document.querySelector('.add')
+    const substract = document.querySelector('.substract')
+    const problemContainer = document.querySelector('.game')
     const inputData = JSON.parse(localStorage.getItem('inputData'));
+    const stopBttn = document.querySelector('.bttn--stop')
     document.querySelector('.user-greet').innerText = `Have fun, ${inputData.name.replace(/\"/g, "")}!`;
 
     if (!inputData) return;
 
-    document.querySelector('.bttn--stop').addEventListener('click', () => {
+    stopBttn.addEventListener('click', () => {
         const results = JSON.parse(localStorage.getItem('inputData'))
         let storagePlayers = JSON.parse(localStorage.getItem('storagePlayers'))
 
@@ -22,7 +32,6 @@ export const game = () => {
         }
         renderLeaderboard()
     })
-    
 
     const changeMode = () => {
         if (inputData.mode == 'time') {
@@ -37,16 +46,6 @@ export const game = () => {
         }
     }
     changeMode()
-
-    const firstNum = document.querySelector('.num-1')
-    const secondNum = document.querySelector('.num-2')
-    const operator = document.querySelector('.operator')
-    const answer = document.querySelector('.answer')
-    const form = document.querySelector('.gameplay-form')
-    const score = document.querySelector('.score')
-    const add = document.querySelector('.add')
-    const substract = document.querySelector('.substract')
-    const problemContainer = document.querySelector('.game')
 
     function getRandom(min, max) {
         min = Math.ceil(min)
@@ -90,6 +89,8 @@ export const game = () => {
         operator.textContent = data.operator
     }
 
+    let level = 1
+    let inARow = 0
     let totalCorrect = 0
     let totalIncorrect = 0
     let counter = 0
@@ -103,10 +104,15 @@ export const game = () => {
         if (Number(answer.value) === Number(problem.answer)) {
             counter += 1
             totalCorrect += 1
+            inARow += 1
             add.classList.add("fade-animation")
             setTimeout(function() {
                 add.classList.remove('fade-animation')
             },1000)
+            if(inARow == 5){
+                level += 1
+                inARow = 0
+            }
         } else {
             counter -= 1
             totalIncorrect += 1
@@ -116,6 +122,7 @@ export const game = () => {
                 document.querySelector('.score-wrapper').classList.remove('shake-animation')
                 substract.classList.remove('fade-animation')
             },1000)
+            inARow = 0
         }
 
         problemContainer.classList.remove('animationfr')
@@ -134,8 +141,8 @@ export const game = () => {
         document.querySelector('.total-correct').innerText = totalCorrect
         document.querySelector('.total-incorrect').innerText = totalIncorrect
         document.querySelector('.score-num').innerText = counter
-
-        localStorage.setItem('inputData', JSON.stringify(inputData));
+        document.querySelector('.game-level').innerText = level
+        localStorage.setItem('inputData', JSON.stringify(inputData));        
     }
     form.addEventListener('submit', onSubmit)
 }

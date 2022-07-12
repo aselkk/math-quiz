@@ -19,9 +19,7 @@ export function startTimer(duration, display) {
             document.querySelector('.modal-header--end').innerText = `time's up!`
             timer = 0
             const results = JSON.parse(localStorage.getItem('inputData'))
-            console.log(results, 'results')
             let storagePlayers = JSON.parse(localStorage.getItem('storagePlayers'))
-            console.log(storagePlayers, '1231321');
             if(storagePlayers){
                 storagePlayers.push(results)
                 localStorage.setItem('storagePlayers', JSON.stringify(storagePlayers))
@@ -30,7 +28,6 @@ export function startTimer(duration, display) {
                 storagePlayers.push(results)
                 localStorage.setItem('storagePlayers', JSON.stringify(storagePlayers))
             }
-            console.log(JSON.parse(localStorage.getItem('storagePlayers')));
             renderLeaderboard()
             clearInterval(1)
         }
